@@ -1,0 +1,25 @@
+The solution addresses the specificity issue by increasing the specificity of the inner element's selector to override the parent's hover style.
+
+```css
+.container {
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+}
+
+.container:hover {
+  background-color: lightgreen;
+}
+
+.container .inner {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+}
+
+.container:hover .inner:hover {
+  background-color: orange;
+}
+```
+
+By including `.container:hover` in the selector for `.inner:hover`, we ensure that the more specific selector takes precedence, and the orange background is correctly displayed when hovering over the inner element.  Alternatively, an `!important` flag could be used, but this is generally discouraged due to potential maintainability issues.
