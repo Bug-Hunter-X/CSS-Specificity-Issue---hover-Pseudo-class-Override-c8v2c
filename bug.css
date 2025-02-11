@@ -1,0 +1,25 @@
+The following CSS code snippet demonstrates an issue where the expected behavior of the `:hover` pseudo-class is not achieved due to incorrect specificity.
+
+```css
+.container {
+  width: 200px;
+  height: 200px;
+  background-color: lightblue;
+}
+
+.container:hover {
+  background-color: lightgreen;
+}
+
+.container .inner {
+  width: 100px;
+  height: 100px;
+  background-color: yellow;
+}
+
+.container .inner:hover {
+  background-color: orange;
+}
+```
+
+When hovering over the `.inner` element, the `background-color` should change to orange, but it will remain yellow. This is because the selector `.container:hover` has lower specificity than `.container .inner:hover`.  The hover on the inner element isn't triggering its hover style because the parent's hover style is preventing it.  It needs higher specificity to override the parent's style.
